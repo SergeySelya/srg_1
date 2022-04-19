@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TestTask</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="container">
+                    <button class="btn btn-success" onclick="add()">paste form</button>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="container">
+                    <form action="/" method="post" id="form">
+                        {% csrf_token %}
+                        <div class="form-group" id="form-group">
+                            {{ form }}
+                        </div>
+
+                    <button type="submit" class="btn btn-info" id="button-submit">add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        var counter = 1;
+        function add(){
+           var input = document.createElement('input');
+
+            input.name = 'name' + counter;
+            input.type = "text";
+            input.id = "name" + counter;
+            input.placeholder = "name" + counter;
+
+            document.getElementById('form-group').appendChild(input);
+
+            counter++;
+        }
+        </script>
+
+    </body>
+</html>
